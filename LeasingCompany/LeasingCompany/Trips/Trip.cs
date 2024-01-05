@@ -8,5 +8,13 @@ namespace LeasingCompany
 {
     internal class Trip
     {
+        public int Duration;
+        public int Distance;
+
+        Trip(int duration) 
+        {
+        
+        }
+
     }
 }

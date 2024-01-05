@@ -8,5 +8,11 @@ namespace LeasingCompany
 {
     internal class RentalPayment
     {
+        IVehicle Vehicle;
+
+        RentalPayment(IVehicle vehicle)
+        {
+
+        }
     }
 }
