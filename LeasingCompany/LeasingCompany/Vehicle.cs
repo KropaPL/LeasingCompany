@@ -8,16 +8,17 @@ namespace LeasingCompany
 {
     internal abstract class Vehicle : IVehicle
     {
-        public int ID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Brand { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Model { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int YearOfManufacture { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Color { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal Price { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string RegistrationNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int ID { get ; set ; }
+        public string Brand { get ; set ; }
+        public string Model { get ; set ; }
+        public int YearOfManufacture { get ; set ; }
+        public string Color { get ; set ; }
+        public decimal Price { get ; set ; }
+        public string RegistrationNumber { get ; set ; }
 
-        public decimal CalculateRentalCost()
+        public virtual decimal CalculateRentalCost()
         {
+            
             throw new NotImplementedException();
         }
     }

@@ -9,6 +9,7 @@ namespace LeasingCompany
     internal interface IVehicle
     {
         int ID { get; set; }
+        decimal coefficient { get; set; }
         string Brand { get; set; }
         string Model { get; set; }
         int YearOfManufacture { get; set; }
