@@ -11,6 +11,7 @@ namespace LeasingCompany.Vehicles
         public CargoVehicle(int weight ,string brand, string model, int yearOfManufacture, string color, decimal price, string registrationNumber, decimal coefficient, decimal mileage) : base(brand, model, yearOfManufacture, color, price, registrationNumber, coefficient, mileage)
         {
             Weight = weight;
+            TypeOfVehicle = Type.Cargo;
         }
 
         public decimal Weight { get; set; }

@@ -9,7 +9,7 @@ using LeasingCompany.Vehicles;
 
 namespace LeasingCompany.Payment
 {
-    internal class RentalPayment
+    internal class RentalPayment : IPayment
     {
         public decimal? CalculateRentalCost(IVehicle vehicle, IDriver driver, ITrip trip)
         {

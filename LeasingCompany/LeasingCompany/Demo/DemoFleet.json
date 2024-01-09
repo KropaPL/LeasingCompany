@@ -1,0 +1,65 @@
+[
+    {
+        "ID": 1,
+        "Brand": "Toyota",
+        "Model": "Corolla",
+        "YearOfManufacture": 2020,
+        "Color": "Black",
+        "Price": 25000,
+        "RegistrationNumber": "ABC123",
+        "Coefficient": 1.5,
+        "Mileage": 3000,
+        "Type": "Passenger"
+    },
+    {
+        "ID": 2,
+        "Brand": "Volvo",
+        "Model": "FH16",
+        "YearOfManufacture": 2018,
+        "Color": "Blue",
+        "Price": 80000,
+        "RegistrationNumber": "GHI789",
+        "Coefficient": 2.0,
+        "Mileage": 15000,
+        "Type": "Cargo",
+        "Weight": 14000
+    },
+    {
+        "ID": 3,
+        "Brand": "Skoda",
+        "Model": "Fabia",
+        "YearOfManufacture": 2006,
+        "Color": "Silver",
+        "Price": 4000,
+        "RegistrationNumber": "EWE50E1",
+        "Coefficient": 1.5,
+        "Mileage": 90000,
+        "Type": "Passenger"
+    },
+    {
+        "ID": 4,
+        "Brand": "Skoda",
+        "Model": "Fabia",
+        "YearOfManufacture": 2004,
+        "Color": "Silver",
+        "Price": 3000,
+        "RegistrationNumber": "DW78E9",
+        "Coefficient": 2.0,
+        "Mileage": 1500000,
+        "Type": "Passenger"
+    },
+    {
+        "ID": 5,
+        "Brand": "Ford",
+        "Model": "Transit",
+        "YearOfManufacture": 2022,
+        "Color": "Blue",
+        "Price": 80000,
+        "RegistrationNumber": "POT20A2",
+        "Coefficient": 2.0,
+        "Mileage": 250000,
+        "Type": "Cargo",
+        "Weight": 15000
+    }
+
+]

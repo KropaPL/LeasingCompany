@@ -19,6 +19,7 @@ namespace LeasingCompany
         public string RegistrationNumber { get ; set ; }
         public decimal Coefficient { get; set; }
         public decimal Mileage { get ; set; }
+        public Vehicles.Type TypeOfVehicle { get ; set; }
 
         public Vehicle(string brand, 
             string model, 

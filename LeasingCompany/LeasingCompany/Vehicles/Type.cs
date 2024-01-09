@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace LeasingCompany.Vehicles
 {
-    internal class Type
+    internal enum Type
     {
+        Cargo,
+        Passenger
     }
 }

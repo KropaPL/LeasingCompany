@@ -1,4 +1,6 @@
-﻿using LeasingCompany.Vehicles;
+﻿using LeasingCompany.Driver;
+using LeasingCompany.Trips;
+using LeasingCompany.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,6 @@ namespace LeasingCompany.Payment
 {
     internal interface IPayment
     {
-        IVehicle Vehicle { get; set; }
-        decimal CalculateRentalCost();
+        public decimal? CalculateRentalCost(IVehicle vehicle, IDriver driver, ITrip trip);
     }
 }

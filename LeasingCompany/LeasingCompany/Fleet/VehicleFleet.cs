@@ -1,4 +1,6 @@
 ﻿using LeasingCompany.Vehicles;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,7 @@ namespace LeasingCompany.Fleet
         }
 
 
+
         public void AddVehicle(Vehicle vehicle)
         {
             vehicles.Add(vehicle);
@@ -25,7 +28,7 @@ namespace LeasingCompany.Fleet
 
         public List<IVehicle> GetVehiclesByBrand(string brand)
         {
-            List <IVehicle> result = vehicles.Where(v => v.Brand.Equals(brand, StringComparison.OrdinalIgnoreCase)).ToList();
+            List<IVehicle> result = vehicles.Where(v => v.Brand.Equals(brand, StringComparison.OrdinalIgnoreCase)).ToList();
             if (result == null)
             {
                 return null;
@@ -110,6 +113,51 @@ namespace LeasingCompany.Fleet
 
             return vehiclesForMaintenance;
         }
+
+        public void LoadFleetFromJson(string jsonFilePath)
+        {
+            string jsonText = System.IO.File.ReadAllText(jsonFilePath);
+
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
+            JArray jsonArray = JArray.Parse(jsonText);
+
+            foreach (JObject vehicleObject in jsonArray)
+            {
+                string type = vehicleObject["Type"].ToString();
+
+                if (type == "Passenger")
+                {
+                    PassengerVehicle passengerVehicle = vehicleObject.ToObject<PassengerVehicle>(JsonSerializer.Create(settings));
+                    vehicles.Add(passengerVehicle);
+                }
+                else if (type == "Cargo")
+                {
+                    CargoVehicle cargoVehicle = vehicleObject.ToObject<CargoVehicle>(JsonSerializer.Create(settings));
+                    vehicles.Add(cargoVehicle);
+                }
+            }
+        }
+
+        public decimal CalculateTotalFleetValue()
+        {
+            decimal totalValue = 0;
+            foreach (var vehicle in vehicles)
+            {
+                int yearsOwned = DateTime.Now.Year - vehicle.YearOfManufacture;
+                decimal depreciationRate = (vehicle.GetType() == typeof(PassengerVehicle)) ? 0.10m : 0.07m;
+                decimal initialPrice = (decimal)vehicle.Price;
+                decimal depreciation = initialPrice * (decimal)Math.Pow((double)(1 - depreciationRate), yearsOwned);
+                totalValue += depreciation;
+            }
+            return totalValue;
+        }
+
+
+
 
     }
 }
