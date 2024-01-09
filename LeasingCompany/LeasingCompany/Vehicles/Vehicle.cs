@@ -40,5 +40,18 @@ namespace LeasingCompany
             Coefficient = coefficient;
             Mileage = mileage;
         }
+
+        public int CalculateComfortLevel()
+        {
+            int yearsDifference = DateTime.Now.Year - YearOfManufacture;
+
+            decimal yearCoefficient = 1;
+            decimal priceCoefficient = 2;
+
+            int ComfortLevel = (int)(Price * priceCoefficient / (yearsDifference * yearCoefficient));
+
+            return ComfortLevel;
+        }
+
     }
 }

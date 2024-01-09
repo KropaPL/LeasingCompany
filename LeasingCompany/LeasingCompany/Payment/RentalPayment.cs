@@ -20,7 +20,6 @@ namespace LeasingCompany.Payment
             }
             else if (vehicle.GetType() == typeof(CargoVehicle)) 
             {
-                Console.WriteLine("It's Cargo!");
                 payment = CalculateRentalCostForCargoVehicle(vehicle, trip);
             } else
             {

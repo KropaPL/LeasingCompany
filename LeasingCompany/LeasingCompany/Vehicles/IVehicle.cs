@@ -17,6 +17,8 @@ namespace LeasingCompany.Vehicles
         decimal Price { get; set; }
         string RegistrationNumber { get; set; }
         decimal Mileage { get; set; }
+        Type TypeOfVehicle { get; set; }
+        public int CalculateComfortLevel();
 
     }
 }
