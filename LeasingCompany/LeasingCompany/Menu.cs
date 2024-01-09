@@ -61,7 +61,7 @@ namespace LeasingCompany
                                 Console.WriteLine("ID  Brand  Model YearOfManufacture Price");
                                 foreach (IVehicle vehicle in vehiclesByBrand)
                                 {
-                                    Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
+                                    Console.WriteLine($"{vehicle.ID} {vehicle.Brand} {vehicle.Model} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
                                 }
                                 madeChoice = true;
                                 break;
@@ -100,9 +100,10 @@ namespace LeasingCompany
                                 break;
                             case 5:
                                 List<IVehicle> vehiclesRequiringMaintenance = VehicleFleet.GetVehiclesRequiringMaintenance();
+                                Console.WriteLine("ID  Brand  Model  Color  YearOfManufacture");
                                 foreach (IVehicle vehicle in vehiclesRequiringMaintenance)
                                 {
-                                    Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.Color} {vehicle.YearOfManufacture}");
+                                    Console.WriteLine($"{vehicle.ID} {vehicle.Brand} {vehicle.Model} {vehicle.Color} {vehicle.YearOfManufacture}");
                                 }
                                 madeChoice = true;
                                 break;
