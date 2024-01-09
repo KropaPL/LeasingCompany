@@ -41,6 +41,8 @@ namespace LeasingCompany
                 Console.WriteLine("6 - Exit");
                 Console.WriteLine("Enter choice");
 
+                Console.WriteLine();
+
                 bool madeChoice = false;
                 int choiceNumber = 0; // Define outside the loop scope
 
@@ -68,6 +70,7 @@ namespace LeasingCompany
                                 string brandTendure = Console.ReadLine();
                                 List<Vehicle> vehiclesTendure = VehicleFleet.GetVehiclesExceedingTenure(brandTendure);
                                 Console.WriteLine("List of vehicles of a chosen model that have exceeded a predetermined operational tenure: ");
+
                                 Console.WriteLine("ID  Brand  Model YearOfManufacture Mileage");
                                 foreach (Vehicle vehicle in vehiclesTendure)
                                 {
@@ -76,7 +79,7 @@ namespace LeasingCompany
                                 madeChoice = true;
                                 break;
                             case 3:
-                                Console.WriteLine($"Total fleet value: {VehicleFleet.CalculateTotalFleetValue}");
+                                Console.WriteLine($"Total fleet value: {VehicleFleet.CalculateTotalFleetValue()}");
                                 madeChoice = true;
                                 break;
                             case 4:
@@ -90,7 +93,7 @@ namespace LeasingCompany
                                 Console.WriteLine("ID  Brand  Model  Color  YearOfManufacture Price");
                                 foreach (IVehicle vehicle in vehiclesByBrandAndColor)
                                 {
-                                    Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.Color} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
+                                    Console.WriteLine($"{vehicle.ID} {vehicle.Brand} {vehicle.Model} {vehicle.Color} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
                                 }
 
                                 madeChoice = true;

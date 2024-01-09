@@ -153,7 +153,12 @@ namespace LeasingCompany.Fleet
                 decimal depreciation = initialPrice * (decimal)Math.Pow((double)(1 - depreciationRate), yearsOwned);
                 totalValue += depreciation;
             }
-            return totalValue;
+            return Rounder(totalValue);
+        }
+
+        private decimal Rounder(decimal payment)
+        {
+            return Math.Floor(payment * 100) / 100; ;
         }
 
 
