@@ -10,6 +10,6 @@ namespace LeasingCompany.Payment
     internal interface IPayment
     {
         IVehicle Vehicle { get; set; }
-        decimal Cal
+        decimal CalculateRentalCost();
     }
 }

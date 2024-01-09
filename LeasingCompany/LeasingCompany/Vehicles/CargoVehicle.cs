@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeasingCompany
+namespace LeasingCompany.Vehicles
 {
-    internal class CargoVehicle
+    internal class CargoVehicle : Vehicle
     {
+        decimal weight { get; set; }
     }
 }

@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeasingCompany
+namespace LeasingCompany.Trips
 {
-    internal class Trip
+    internal class Trip : ITrip
     {
-        public int Duration;
-        public int Distance;
-
-        Trip(int duration) 
+        public int Duration { get; set; }
+        public int Distance { get; set; }
+        public Trip(int duration, int distance)
         {
-        
+            Duration = duration;
+            Distance = distance;
         }
 
+            
     }
 }

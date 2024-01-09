@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeasingCompany
+namespace LeasingCompany.Vehicles
 {
-    internal class PassengerVehicle
+    internal class PassengerVehicle : Vehicle
     {
+        public int NumberOfPassengers;
     }
 }

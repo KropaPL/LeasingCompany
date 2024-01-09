@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeasingCompany.Vehicles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,7 @@ namespace LeasingCompany
         public string Color { get ; set ; }
         public decimal Price { get ; set ; }
         public string RegistrationNumber { get ; set ; }
+        public decimal coefficient { get; set; }
 
-        public virtual decimal CalculateRentalCost()
-        {
-            
-            throw new NotImplementedException();
-        }
     }
 }

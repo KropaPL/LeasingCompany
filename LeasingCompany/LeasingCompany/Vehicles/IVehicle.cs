@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeasingCompany
+namespace LeasingCompany.Vehicles
 {
     internal interface IVehicle
     {
@@ -14,9 +14,8 @@ namespace LeasingCompany
         string Model { get; set; }
         int YearOfManufacture { get; set; }
         string Color { get; set; }
-        decimal Price {  get; set; }
+        decimal Price { get; set; }
         string RegistrationNumber { get; set; }
-        decimal CalculateRentalCost();
 
     }
 }

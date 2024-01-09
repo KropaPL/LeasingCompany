@@ -8,5 +8,6 @@ namespace LeasingCompany.Driver
 {
     internal interface IDriver
     {
+        decimal Rating { get; set; }
     }
 }

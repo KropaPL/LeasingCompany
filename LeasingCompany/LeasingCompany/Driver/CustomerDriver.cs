@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace LeasingCompany.Driver
 {
-    internal class CustomerDriver
+    internal class CustomerDriver : IDriver
     {
-        decimal Rating;
-        public CustomerDriver() 
+        public decimal Rating { get; set; }
+
+        public CustomerDriver(decimal rating) 
         {
-        
+            Rating = rating;
         }
+
+
+
     }
 }
