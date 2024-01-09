@@ -45,12 +45,17 @@ namespace LeasingCompany.Fleet
 
             var result = vehicles.Where(vehicle =>
                 vehicle.Model.Trim().Equals(chosenModel.Trim(), StringComparison.OrdinalIgnoreCase) &&
-                ((vehicle.GetType() == typeof(PassengerVehicle) &&
-                  (((PassengerVehicle)vehicle).Mileage > passengerMileageThreshold ||
-                   (DateTime.Now.Year - vehicle.YearOfManufacture) > passengerYearsThreshold)) ||
-                 (vehicle.GetType() == typeof(CargoVehicle) &&
-                  (((CargoVehicle)vehicle).Mileage > cargoMileageThreshold ||
-                   (DateTime.Now.Year - vehicle.YearOfManufacture) > cargoYearsThreshold)))
+                (
+                    (vehicle.TypeOfVehicle == Vehicles.Type.Passenger &&
+                     (((PassengerVehicle)vehicle).Mileage > passengerMileageThreshold ||
+                      (DateTime.Now.Year - vehicle.YearOfManufacture) > passengerYearsThreshold)
+                    )
+                    ||
+                    (vehicle.TypeOfVehicle == Vehicles.Type.Cargo &&
+                     (((CargoVehicle)vehicle).Mileage > cargoMileageThreshold &&
+                      (DateTime.Now.Year - vehicle.YearOfManufacture) > cargoYearsThreshold)
+                    )
+                )
             ).ToList();
 
             return result;

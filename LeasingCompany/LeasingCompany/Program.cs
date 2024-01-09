@@ -18,10 +18,6 @@ namespace LeasingCompany
 
             VehicleFleet vehicleFleet = new VehicleFleet();
 
-            PassengerVehicle skoda = new PassengerVehicle(5, "Skoda", "fabia", 2003, "Silver", 4000m, "EWE50C5", 1m, 1500000000);
-            vehicleFleet.AddVehicle(skoda);
-
-
             // Example trip
             Trip trip = new Trip(5, 230);
 
@@ -31,12 +27,6 @@ namespace LeasingCompany
 
             // Loading Fleet
             vehicleFleet.LoadFleetFromJson(filePath);
-
-            List <IVehicle> lista = vehicleFleet.GetVehiclesExceedingTenure("Skoda");
-            foreach (Vehicle v in lista)
-            {
-                Console.WriteLine(v.ID);
-            }
 
             Menu menu = new Menu(driver, vehicleFleet, payment, trip);
             menu.ShowMenu();
