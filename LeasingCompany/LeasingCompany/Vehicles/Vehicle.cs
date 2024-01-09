@@ -9,6 +9,7 @@ namespace LeasingCompany
 {
     internal abstract class Vehicle : IVehicle
     {
+        private static int IDNumber = 0;
         public int ID { get ; set ; }
         public string Brand { get ; set ; }
         public string Model { get ; set ; }
@@ -16,7 +17,28 @@ namespace LeasingCompany
         public string Color { get ; set ; }
         public decimal Price { get ; set ; }
         public string RegistrationNumber { get ; set ; }
-        public decimal coefficient { get; set; }
+        public decimal Coefficient { get; set; }
+        public decimal Mileage { get ; set; }
 
+        public Vehicle(string brand, 
+            string model, 
+            int yearOfManufacture, 
+            string color, 
+            decimal price,
+            string registrationNumber,
+            decimal coefficient,
+            decimal mileage)
+        {
+            ID = IDNumber;
+            IDNumber++;
+            Brand = brand;
+            Model = model;
+            YearOfManufacture = yearOfManufacture;
+            Color = color;
+            Price = price;
+            RegistrationNumber = registrationNumber;
+            Coefficient = coefficient;
+            Mileage = mileage;
+        }
     }
 }
