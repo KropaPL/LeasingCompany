@@ -18,6 +18,10 @@ namespace LeasingCompany
 
             VehicleFleet vehicleFleet = new VehicleFleet();
 
+            PassengerVehicle skoda = new PassengerVehicle(5, "Skoda", "fabia", 2003, "Silver", 4000m, "EWE50C5", 1m, 1500000000);
+            vehicleFleet.AddVehicle(skoda);
+
+
             // Example trip
             Trip trip = new Trip(5, 230);
 
