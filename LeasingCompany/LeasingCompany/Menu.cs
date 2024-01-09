@@ -66,15 +66,15 @@ namespace LeasingCompany
                                 madeChoice = true;
                                 break;
                             case 2:
-                                Console.WriteLine("Enter brand of a car");
-                                string brandTendure = Console.ReadLine();
-                                List<IVehicle> vehiclesTendure = VehicleFleet.GetVehiclesExceedingTenure(brandTendure);
+                                Console.WriteLine("Enter model of a car");
+                                string modelTendure = Console.ReadLine();
+                                List<IVehicle> vehiclesTendure = VehicleFleet.GetVehiclesExceedingTenure(modelTendure);
                                 Console.WriteLine("List of vehicles of a chosen model that have exceeded a predetermined operational tenure: ");
 
                                 Console.WriteLine("ID  Brand  Model YearOfManufacture Mileage");
-                                foreach (Vehicle vehicle in vehiclesTendure)
+                                foreach (IVehicle vehicle in vehiclesTendure)
                                 {
-                                    Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.YearOfManufacture} {vehicle.Mileage}");
+                                    Console.WriteLine($"{vehicle.ID} {vehicle.Brand} {vehicle.Model} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
                                 }
                                 madeChoice = true;
                                 break;
