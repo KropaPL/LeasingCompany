@@ -29,84 +29,93 @@ namespace LeasingCompany
 
         public void ShowMenu()
         {
-            Console.WriteLine("Menu");
-            Console.WriteLine("1 - List vehicles of specified Brand");
-            Console.WriteLine("2 - List of vehicles of a chosen model that have exceeded a predetermined operational tenure");
-            Console.WriteLine("3 - Calculate total value of the entire vehicle fleet owned");
-            Console.WriteLine("4 - Given a preference for vehicle brand and color");
-            Console.WriteLine("5 - Show a list of vehicles that are requiring maintenance");
-            Console.WriteLine("Enter choice");
-
-            bool madeChoice = false;
-            int choiceNumber = 0; // Define outside the loop scope
-
-            while (!madeChoice)
+            bool exit = false;
+            while (!exit)
             {
-                string choice = Console.ReadLine();
+                Console.WriteLine("Menu");
+                Console.WriteLine("1 - List vehicles of specified Brand");
+                Console.WriteLine("2 - List of vehicles of a chosen model that have exceeded a predetermined operational tenure");
+                Console.WriteLine("3 - Calculate total value of the entire vehicle fleet owned");
+                Console.WriteLine("4 - Given a preference for vehicle brand and color");
+                Console.WriteLine("5 - Show a list of vehicles that are requiring maintenance");
+                Console.WriteLine("6 - Exit");
+                Console.WriteLine("Enter choice");
 
-                if (int.TryParse(choice, out choiceNumber))
+                bool madeChoice = false;
+                int choiceNumber = 0; // Define outside the loop scope
+
+                while (!madeChoice)
                 {
-                    switch (choiceNumber)
+                    string choice = Console.ReadLine();
+
+                    if (int.TryParse(choice, out choiceNumber))
                     {
-                        case 1:
-                            Console.WriteLine("Enter brand of a car");
-                            string brand = Console.ReadLine();
-                            List <IVehicle> vehiclesByBrand = VehicleFleet.GetVehiclesByBrand(brand);
-                            Console.WriteLine("ID  Brand  Model YearOfManufacture Price");
-                            foreach (IVehicle vehicle in vehiclesByBrand)
-                            {
-                                Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
-                            }
-                            madeChoice = true;
-                            break;
-                        case 2:
-                            Console.WriteLine("Enter brand of a car");
-                            string brandTendure = Console.ReadLine();
-                            List<Vehicle> vehiclesTendure = VehicleFleet.GetVehiclesExceedingTenure(brandTendure);
-                            Console.WriteLine("List of vehicles of a chosen model that have exceeded a predetermined operational tenure: ");
-                            Console.WriteLine("ID  Brand  Model YearOfManufacture Mileage");
-                            foreach (Vehicle vehicle in vehiclesTendure)
-                            {
-                                Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.YearOfManufacture} {vehicle.Mileage}");
-                            }
-                            madeChoice = true;
-                            break;
-                        case 3:
-                            Console.WriteLine($"Total fleet value: {VehicleFleet.CalculateTotalFleetValue}");
-                            madeChoice = true;
-                            break;
-                        case 4:
-                            Console.WriteLine("Enter brand of a car");
-                            string brandWithColor = Console.ReadLine();
-                            Console.WriteLine("Enter color of a car");
-                            string CarsColor = Console.ReadLine();
+                        switch (choiceNumber)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter brand of a car");
+                                string brand = Console.ReadLine();
+                                List<IVehicle> vehiclesByBrand = VehicleFleet.GetVehiclesByBrand(brand);
+                                Console.WriteLine("ID  Brand  Model YearOfManufacture Price");
+                                foreach (IVehicle vehicle in vehiclesByBrand)
+                                {
+                                    Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
+                                }
+                                madeChoice = true;
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter brand of a car");
+                                string brandTendure = Console.ReadLine();
+                                List<Vehicle> vehiclesTendure = VehicleFleet.GetVehiclesExceedingTenure(brandTendure);
+                                Console.WriteLine("List of vehicles of a chosen model that have exceeded a predetermined operational tenure: ");
+                                Console.WriteLine("ID  Brand  Model YearOfManufacture Mileage");
+                                foreach (Vehicle vehicle in vehiclesTendure)
+                                {
+                                    Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.YearOfManufacture} {vehicle.Mileage}");
+                                }
+                                madeChoice = true;
+                                break;
+                            case 3:
+                                Console.WriteLine($"Total fleet value: {VehicleFleet.CalculateTotalFleetValue}");
+                                madeChoice = true;
+                                break;
+                            case 4:
+                                Console.WriteLine("Enter brand of a car");
+                                string brandWithColor = Console.ReadLine();
+                                Console.WriteLine("Enter color of a car");
+                                string CarsColor = Console.ReadLine();
 
-                            List<IVehicle> vehiclesByBrandAndColor = VehicleFleet.GetVehiclesByBrandAndColor(brandWithColor, CarsColor);
+                                List<IVehicle> vehiclesByBrandAndColor = VehicleFleet.GetVehiclesByBrandAndColor(brandWithColor, CarsColor);
 
-                            Console.WriteLine("ID  Brand  Model  Color  YearOfManufacture Price");
-                            foreach (IVehicle vehicle in vehiclesByBrandAndColor)
-                            {
-                                Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.Color} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
-                            }
+                                Console.WriteLine("ID  Brand  Model  Color  YearOfManufacture Price");
+                                foreach (IVehicle vehicle in vehiclesByBrandAndColor)
+                                {
+                                    Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.Color} {vehicle.YearOfManufacture} {Payment.CalculateRentalCost(vehicle, Driver, Trip)}");
+                                }
 
-                            madeChoice = true;
+                                madeChoice = true;
+                                break;
+                            case 5:
+                                List<IVehicle> vehiclesRequiringMaintenance = VehicleFleet.GetVehiclesRequiringMaintenance();
+                                foreach (IVehicle vehicle in vehiclesRequiringMaintenance)
+                                {
+                                    Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.Color} {vehicle.YearOfManufacture}");
+                                }
+                                madeChoice = true;
+                                break;
+                            case 6:
+                                exit = true;
+                                madeChoice = true;
                             break;
-                        case 5:
-                            List<IVehicle> vehiclesRequiringMaintenance = VehicleFleet.GetVehiclesRequiringMaintenance();
-                            foreach (IVehicle vehicle in vehiclesRequiringMaintenance)
-                            {
-                                Console.WriteLine($"{vehicle.ID} {vehicle.Model} {vehicle.Color} {vehicle.YearOfManufacture}");
-                            }
-                            madeChoice = true;
-                            break;
-                        default:
-                            Console.WriteLine("Invalid choice. Please enter a valid option.");
-                            break;
+                            default:
+                                Console.WriteLine("Invalid choice. Please enter a valid option.");
+                                break;
+                        }
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please enter a number corresponding to the menu choice.");
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter a number corresponding to the menu choice.");
+                    }
                 }
             }
         }
