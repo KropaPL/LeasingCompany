@@ -68,7 +68,7 @@ namespace LeasingCompany
                             case 2:
                                 Console.WriteLine("Enter brand of a car");
                                 string brandTendure = Console.ReadLine();
-                                List<Vehicle> vehiclesTendure = VehicleFleet.GetVehiclesExceedingTenure(brandTendure);
+                                List<IVehicle> vehiclesTendure = VehicleFleet.GetVehiclesExceedingTenure(brandTendure);
                                 Console.WriteLine("List of vehicles of a chosen model that have exceeded a predetermined operational tenure: ");
 
                                 Console.WriteLine("ID  Brand  Model YearOfManufacture Mileage");
@@ -119,6 +119,7 @@ namespace LeasingCompany
                     {
                         Console.WriteLine("Invalid input. Please enter a number corresponding to the menu choice.");
                     }
+                    Console.WriteLine();
                 }
             }
         }

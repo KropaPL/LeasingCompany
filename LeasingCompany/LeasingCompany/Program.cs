@@ -28,7 +28,7 @@ namespace LeasingCompany
             // Loading Fleet
             vehicleFleet.LoadFleetFromJson(filePath);
 
-            List <Vehicle> lista = vehicleFleet.GetVehiclesExceedingTenure("Skoda");
+            List <IVehicle> lista = vehicleFleet.GetVehiclesExceedingTenure("Skoda");
             foreach (Vehicle v in lista)
             {
                 Console.WriteLine(v.ID);

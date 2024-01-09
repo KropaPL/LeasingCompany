@@ -36,47 +36,27 @@ namespace LeasingCompany.Fleet
             return result;
         }
 
-        public List<Vehicle> GetVehiclesExceedingTenure(string chosenModel)
+        public List<IVehicle> GetVehiclesExceedingTenure(string chosenModel)
         {
             const int passengerMileageThreshold = 100000;
             const int passengerYearsThreshold = 5;
             const int cargoMileageThreshold = 1000000;
             const int cargoYearsThreshold = 15;
 
-            var result = new List<Vehicle>();
-
-            foreach (var vehicle in vehicles)
-            {
-                if (vehicle.Model.Equals(chosenModel, StringComparison.OrdinalIgnoreCase))
-                {
-                    if (vehicle.GetType() == typeof(PassengerVehicle))
-                    {
-                        var passengerVehicle = (PassengerVehicle)vehicle;
-                        if (passengerVehicle.Mileage > passengerMileageThreshold ||
-                            (DateTime.Now.Year - passengerVehicle.YearOfManufacture) > passengerYearsThreshold)
-                        {
-                            result.Add(passengerVehicle);
-                        }
-                    }
-                    else if (vehicle.GetType() == typeof(CargoVehicle))
-                    {
-                        var cargoVehicle = (CargoVehicle)vehicle;
-                        if (cargoVehicle.Mileage > cargoMileageThreshold ||
-                            (DateTime.Now.Year - cargoVehicle.YearOfManufacture) > cargoYearsThreshold)
-                        {
-                            result.Add(cargoVehicle);
-                        }
-                    }
-                }
-            }
-
-            if (result == null)
-            {
-                return null;
-            }
+            var result = vehicles.Where(vehicle =>
+                vehicle.Model.Trim().Equals(chosenModel.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                ((vehicle.GetType() == typeof(PassengerVehicle) &&
+                  (((PassengerVehicle)vehicle).Mileage > passengerMileageThreshold ||
+                   (DateTime.Now.Year - vehicle.YearOfManufacture) > passengerYearsThreshold)) ||
+                 (vehicle.GetType() == typeof(CargoVehicle) &&
+                  (((CargoVehicle)vehicle).Mileage > cargoMileageThreshold ||
+                   (DateTime.Now.Year - vehicle.YearOfManufacture) > cargoYearsThreshold)))
+            ).ToList();
 
             return result;
         }
+
+
 
         public List<IVehicle> GetVehiclesByBrandAndColor(string preferredBrand, string preferredColor)
         {
